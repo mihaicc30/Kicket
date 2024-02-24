@@ -50,6 +50,8 @@ const router = createRouter({
       },
     },
     // ----------------------------------------------------------------------------------
+    // future ideas? : pages:notifications,chat,suggestions
+    // future features? : user resolution rating/feedback
   ],
 });
 

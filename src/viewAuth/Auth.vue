@@ -1,25 +1,29 @@
 <template>
-  <div v-if="!isLoggedIn" class="flex flex-col items-center gap-2 m-auto py-10">
-    <p class="text-xl font-[600]">Welcome to Kicket!</p>
-    <img src="@/components/icons/kicket.png" alt="logo" class="size-20" />
-    <p class="text-xs">Please sign in to continue.</p>
+  <div v-if="!isLoggedIn" class="flex size-full bg-gradient-to-br from-[#2ACDDE75] via-50% to-[#4B96E575] via-white">
+    <div class="card flex flex-col items-center gap-2 m-auto py-10 px-[5vw] rounded-lg shadow-md">
+      <img src="@/components/icons/kicket.png" alt="logo" class="size-20" />
+      <p class="text-xl font-[600]">Welcome to Kicket!</p>
+      <p class="text-xs">Please sign in to continue.</p>
 
-    <div v-if="errorMessage" class="flex gap-4 flex-nowrap w-full mt-4 justify-between px-4 border-b-2 border-red-500">
-      <p class="text-red-500">{{ errorMessage }}</p>
-      <button @click="clearErrorMessage">✖</button>
-    </div>
+      <div v-if="errorMessage" class="flex gap-4 flex-nowrap w-full mt-4 justify-between px-4 border-b-2 border-red-500">
+        <p class="text-red-500">{{ errorMessage }}</p>
+        <button @click="clearErrorMessage">✖</button>
+      </div>
 
-    <div class="flex flex-col gap-y-1 my-8">
-      <p>Username</p>
-      <input type="text" class="px-4 py-2 ring-1 ring-black/20" v-model="email" name="email" />
-      <p>Password</p>
-      <input type="password" class="px-4 py-2 ring-1 ring-black/20" v-model="password" name="password" />
-      <label class="flex flex-nowrap gap-4 items-center text-xs" for="rememberMe">
-        <input type="checkbox" class="size-4 ring-black/20" v-model="rememberMe" id="rememberMe" />
-        <span> Remember me </span>
-      </label>
+      <div class="flex flex-col gap-y-2 my-8">
+        <p class="text-xs font-[600]">Email</p>
+        <input type="text" class="inputField p-2 outline-none border-b-2" v-model="email" name="email" placeholder="Email..." />
+
+        <p class="text-xs font-[600]">Password</p>
+        <input type="password" class="inputField p-2 outline-none border-b-2" v-model="password" name="password" placeholder="Password..." />
+
+        <label class="flex flex-nowrap gap-4 items-center text-xs" for="rememberMe">
+          <input type="checkbox" class="size-4 ring-black/20" v-model="rememberMe" id="rememberMe" />
+          <span> Remember me </span>
+        </label>
+      </div>
+      <button class="px-4 py-2 ring-1 ring-black/20 border-[1px] border-black/5 font-[600] text-sm rounded-lg shadow-md" @click="login">Login</button>
     </div>
-    <button class="px-4 py-2 ring-1 ring-black/20" @click="login">Login</button>
   </div>
 </template>
 
@@ -96,3 +100,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.card {
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 16px 16px 44px #8f8f8f91, -16px -16px 44px #ffffff;
+}
+</style>
