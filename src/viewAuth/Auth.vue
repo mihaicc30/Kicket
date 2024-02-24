@@ -44,8 +44,8 @@ export default {
   data() {
     return {
       // temp - easier to test
-      email: "mihai.culea@keymas.co.uk",
-      password: "mihai.culea@keymas.co.uk",
+      email: import.meta.env.VITE_VUE_EMAIL || '',
+      password: import.meta.env.VITE_VUE_PASS || '',
       // email: "",
       // password: "",
       rememberMe: localStorage.getItem("rememberMe") || false,

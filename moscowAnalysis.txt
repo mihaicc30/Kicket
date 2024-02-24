@@ -9,6 +9,8 @@ Must-Have:
     -Auth System:                   A robust authentication system is crucial for securing user accounts and sensitive information.
 
 Should-Have:        
+    -Ticket Priority:               Implement a priority system for tickets, allowing users and admins to designate low, medium, or high priority based on the urgency of the issue.
+    -Ticket Status:                 Provide a status attribute for tickets, allowing tracking of whether they are complete, unread, or pending resolution.
     -Responsive Design:             Ensure the system is responsive to different devices and screen sizes, enhancing accessibility.
     
     (if going public with all the tickets === +transparency === +user trust)
@@ -49,7 +51,7 @@ Must-Have:
     -Ticket Management:             Admins must be equipped to efficiently handle and prioritize tickets.
     -Communication Interface:       An effective messaging platform for communication about tickets is crucial.
     -User Management:               It's vital for admins to view user details, including contact information, and have the ability to add users to the system (both customers and admins/employees).
-    -System Overview:               An overview displaying the status of tickets (complete/uncompleted/pending) is essential for monitoring and decision-making.
+    -System Overview:               An overview displaying the status of tickets (complete/unread/pending) is essential for monitoring and decision-making.
 
 Should-Have:
     -Assign Tasks:                  The ability to assign certain admins or employees to specific tasks enhances task delegation and responsibility.
