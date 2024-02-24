@@ -29,6 +29,7 @@
 
 <script>
 import { encryptData, decryptData } from "@/utils/crypto";
+import store from "@/store";
 export default {
   mounted() {
     if (localStorage.getItem("rememberMe") === "true") {
@@ -40,12 +41,15 @@ export default {
         this.password = decryptData(encryptedPassword, import.meta.env.VITE_VUE_SK);
       }
     }
+    if (store.getters.isAuthenticated && this.$route.path === "/") {
+      this.$router.push("/dashboard");
+    }
   },
   data() {
     return {
       // temp - easier to test
-      email: import.meta.env.VITE_VUE_EMAIL || '',
-      password: import.meta.env.VITE_VUE_PASS || '',
+      email: import.meta.env.VITE_VUE_EMAIL || "",
+      password: import.meta.env.VITE_VUE_PASS || "",
       // email: "",
       // password: "",
       rememberMe: localStorage.getItem("rememberMe") || false,
@@ -57,13 +61,6 @@ export default {
     },
     errorMessage() {
       return this.$store.getters.getErrorMessage;
-    },
-  },
-  watch: {
-    isLoggedIn(isAuthed) {
-      if (isAuthed) {
-        this.$router.push("/dashboard");
-      }
     },
   },
   methods: {

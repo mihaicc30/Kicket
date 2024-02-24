@@ -17,7 +17,6 @@ const router = createRouter({
       component: Auth,
     },
     // ----------------------------------------------------------------------------------
-    // user path
     {
       path: "/dashboard",
       name: "dashboard",
@@ -105,13 +104,18 @@ async function handleAuthentication(to, next) {
         handleEncryptedCookie(encryptedCookie);
         return next();
       } else {
+        // cookie is not valid
         store.dispatch("logout");
         VueCookies.remove("_auth");
         router.push("/");
         return next();
       }
     } catch (error) {
+      store.dispatch("logout");
+      VueCookies.remove("_auth");
+      router.push("/");
       alert(error);
+      next();
     }
   }
   next();
@@ -129,7 +133,7 @@ function cookieIsValid(encryptedCookie, cookieName, router, deviceIdentifier, co
       VueCookies.remove(cookieName);
       router.push({ name: "auth" });
       console.log("Cookie data is corrupted.");
-      return;
+      return false;
     }
 
     // check2
