@@ -2,5 +2,5 @@
 
 <template>
   <!-- {{ console.log($store.state.user) }} -->
-  <p>Dashboard2</p>
+  <p>User View</p>
 </template>

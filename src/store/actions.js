@@ -1,3 +1,5 @@
+import router from "../router";
+
 export default {
   cookieLogin(context, payload) {
     // here will be an actual call to the server api
@@ -16,6 +18,7 @@ export default {
     let userFromDB = databaseMockup.find((user) => user.email === payload.email && user.password === payload.password);
     if (userFromDB) {
       context.commit("login", userFromDB);
+      router.push("/dashboard");
     } else {
       console.error("Invalid credentials");
       context.commit("setErrorMessage", "Invalid credentials");

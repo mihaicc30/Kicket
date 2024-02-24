@@ -2,32 +2,69 @@ import VueCookies from "vue-cookies";
 import { encryptData, decryptData } from "@/utils/crypto";
 
 import { createRouter, createWebHistory } from "vue-router";
-import Auth from "../views/Auth.vue";
+import Auth from "../viewAuth/Auth.vue";
 import store from "../store";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // ----------------------------------------------------------------------------------
+    // common path
     {
       path: "/",
       name: "auth",
       // best not to lazy load auth page
       component: Auth,
     },
+    // ----------------------------------------------------------------------------------
+    // user path
     {
       path: "/dashboard",
       name: "dashboard",
-      component: () => import("../views/Dashboard.vue"),
+      components: {
+        user: () => import("@/viewUser/Dashboard.vue"),
+        admin: () => import("@/viewAdmin/Dashboard.vue"),
+      },
     },
     {
-      path: "/dashboard2",
-      name: "dashboard2",
-      component: () => import("../views/Dashboard2.vue"),
+      path: "/profile",
+      name: "profile",
+      components: {
+        user: () => import("@/viewUser/Profile.vue"),
+        admin: () => import("@/viewAdmin/Profile.vue"),
+      },
     },
+    {
+      path: "/tickets",
+      name: "tickets",
+      components: {
+        user: () => import("@/viewUser/Tickets.vue"),
+        admin: () => import("@/viewAdmin/Tickets.vue"),
+      },
+    },
+    {
+      path: "/users",
+      name: "users",
+      components: {
+        admin: () => import("@/viewAdmin/Users.vue"),
+      },
+    },
+    // ----------------------------------------------------------------------------------
   ],
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
+  try {
+    await handleAuthentication(to, next);
+  } catch (error) {
+    // dont think user will be able to trigger this but just in case
+    alert(error);
+    next();
+  }
+});
+
+// checking and revalidating authentication status
+async function handleAuthentication(to, next) {
   const cookieName = "_auth";
   const encryptedCookie = VueCookies.get(cookieName);
   const isAuthenticated = store.getters.isAuthenticated;
@@ -76,7 +113,9 @@ router.beforeEach((to, from, next) => {
     }
   }
   next();
-});
+}
+
+// helper functions
 
 function cookieIsValid(encryptedCookie, cookieName, router, deviceIdentifier, cookieObtained) {
   try {
@@ -119,6 +158,7 @@ function cookieIsValid(encryptedCookie, cookieName, router, deviceIdentifier, co
 function cookieIsExpired(todaysDate, cookieObtainedDate) {
   return todaysDate !== cookieObtainedDate;
 }
+
 function cookieNotBelongsToDevice(thisDevice, cookieDeviceData) {
   return thisDevice !== cookieDeviceData;
 }

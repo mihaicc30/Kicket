@@ -1,12 +1,14 @@
 <template>
-  <!-- if user is not logged, show login form -->
-  <div v-if="!isLoggedIn" class="flex flex-col items-center gap-2 m-auto">
-    <p class="text-xl font-[600]">Welcome!</p>
-    <p class="text-xs">Please log in to continue.</p>
+  <div v-if="!isLoggedIn" class="flex flex-col items-center gap-2 m-auto py-10">
+    <p class="text-xl font-[600]">Welcome to Kicket!</p>
+    <img src="@/components/icons/kicket.png" alt="logo" class="size-20" />
+    <p class="text-xs">Please sign in to continue.</p>
+
     <div v-if="errorMessage" class="flex gap-4 flex-nowrap w-full mt-4 justify-between px-4 border-b-2 border-red-500">
       <p class="text-red-500">{{ errorMessage }}</p>
       <button @click="clearErrorMessage">✖</button>
     </div>
+
     <div class="flex flex-col gap-y-1 my-8">
       <p>Username</p>
       <input type="text" class="px-4 py-2 ring-1 ring-black/20" v-model="email" name="email" />
@@ -25,9 +27,6 @@
 import { encryptData, decryptData } from "@/utils/crypto";
 export default {
   mounted() {
-    if (this.isLoggedIn) {
-      this.$router.push("/dashboard");
-    }
     if (localStorage.getItem("rememberMe") === "true") {
       const encryptedEmail = localStorage.getItem("email");
       const encryptedPassword = localStorage.getItem("password");

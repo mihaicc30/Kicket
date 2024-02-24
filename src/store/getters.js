@@ -5,7 +5,13 @@ export default {
   getUserDetails(state) {
     return state.user;
   },
+  getUserType(state) {
+    return state.user.type;
+  },
+  userIsAdmin(state) {
+    return state.user.type === "admin";
+  },
   getErrorMessage(state) {
     return state.errorMessage;
   },
-}
+};
