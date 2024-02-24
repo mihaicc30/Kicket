@@ -1,0 +1,64 @@
+MoSCoW analysis 
+
+System Needs:
+------------------------------------------
+Must-Have:
+    -Clean UI:                      The user interface should be visually appealing, organized, and easy to navigate for both customers and admins.
+    -Friendly UI:                   Design the interface to be user-friendly with a minimal learning curve, ensuring efficient use by customers and admins.
+    -Bad Words Filter:              Implement a filter to identify and handle inappropriate language to maintain a professional and respectful environment.
+    -Auth System:                   A robust authentication system is crucial for securing user accounts and sensitive information.
+
+Should-Have:        
+    -Responsive Design:             Ensure the system is responsive to different devices and screen sizes, enhancing accessibility.
+    
+    (if going public with all the tickets === +transparency === +user trust)
+    -Search Functionality:          Include a search feature to help users and admins quickly find relevant information or tickets.
+
+Could-Have:
+    -Dark Mode:                     Consider adding a dark mode option for users who prefer a different visual style.
+
+Won't-Have (at least for now):
+    -Customizable Themes:           Allow users to personalize their experience by choosing from a set of themes or customizing the interface colors.
+
+
+
+Customer User:
+------------------------------------------
+Must-Have:
+    -Submit Tickets:                This is crucial for users to report issues and seek support.
+    -Communication Channels:        Vital for enabling bidirectional communication between users and admins when submitting and managing tickets.
+
+Should-Have:        
+    -Ticket Status Tracking:        Provides users with visibility into the progress of their submitted tickets.
+    -View Ticket History:           Allowing users to view their ticket history provides transparency and reference.
+
+Could-Have:
+    -Live Chat:                     Real-time communication through live chat enhances the user experience.
+    -Notifications:                 A notification system to keep users informed about ticket updates or important announcements.
+    -Feedback Rating:               This feature allows users to provide feedback on the support received, contributing to continuous improvement. 
+
+Won't-Have (at least for now):
+    -Knowledge Base:                Although helpful, it might not be a primary concern for initial implementation.
+    -FAQ Section:                   An FAQ section is important for users to find answers to common queries without creating new tickets.
+
+
+
+Admin User:
+------------------------------------------
+Must-Have:
+    -Ticket Management:             Admins must be equipped to efficiently handle and prioritize tickets.
+    -Communication Interface:       An effective messaging platform for communication about tickets is crucial.
+    -User Management:               It's vital for admins to view user details, including contact information, and have the ability to add users to the system (both customers and admins/employees).
+    -System Overview:               An overview displaying the status of tickets (complete/uncompleted/pending) is essential for monitoring and decision-making.
+
+Should-Have:
+    -Assign Tasks:                  The ability to assign certain admins or employees to specific tasks enhances task delegation and responsibility.
+    -Notifications:                 Implement a system to alert the admin through various means such as email, text, etc.
+    -Ticket Editing/Deleting:       Admins should have the capability to edit, update, or delete user tickets for effective management.
+
+Could-Have:
+    -Reporting and Analytics:       Useful for insights but not essential for basic ticket management.
+    -Word Map:                      While interesting, a word map of the most relevant used words is not critical for the core functionality.
+
+Won't-Have (at least for now):
+    -Knowledge Base Management:     Managing the knowledge base could be deferred for later stages.
